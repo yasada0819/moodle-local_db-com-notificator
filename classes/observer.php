@@ -5,7 +5,7 @@ defined('MOODLE_INTERNAL') || die();
 
 class observer {
     public static function comment_created(\core\event\comment_created $event) {
-        global $DB;
+        global $DB, $CFG;
 
         $commentdata = $event->get_data();
 
@@ -15,6 +15,9 @@ class observer {
         $entry = $DB->get_record('data_records', array('id' => $entryid), '*', MUST_EXIST);
         $entryauthor = $DB->get_record('user', array('id' => $entry->userid), '*', MUST_EXIST);
         $commentauthor = $DB->get_record('user', array('id' => $userid), '*', MUST_EXIST);
+
+        // エントリのURLを生成
+        $entryurl = new \moodle_url('/mod/data/view.php', array('d' => $entry->dataid, 'rid' => $entryid));
 
         if ($entryauthor->id == $userid) {
             return;
@@ -28,7 +31,7 @@ class observer {
 
         $a = new \stdClass();
         $a->fullname = fullname($entryauthor);
-        $a->entrytitle = $entry->name;
+        $a->entryurl = $entryurl->out(); // エントリのURLを取得
         $a->commentauthor = fullname($commentauthor); // コメント投稿者のフルネームを取得
 
         $message->subject = get_string('commentnotification_subject', 'local_db_com_notificator');

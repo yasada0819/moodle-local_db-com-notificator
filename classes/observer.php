@@ -42,11 +42,14 @@ class observer {
         try {
             if ($component === 'mod_data' && $comment->commentarea === 'database_entry') {
                 $entry = $DB->get_record('data_records', array('id' => $itemid), '*', MUST_EXIST);
+                $context = 'データベース';
             } elseif ($component === 'mod_glossary' && $comment->commentarea === 'glossary_entry') {
                 $entry = $DB->get_record('glossary_entries', array('id' => $itemid), '*', MUST_EXIST);
+                $context = '用語集';
             } elseif ($component === 'assignsubmission_comments' && $comment->commentarea === 'submission_comments') {
                 $entry = $DB->get_record('assign_submission', array('id' => $itemid), '*', MUST_EXIST);
                 $cm = get_coursemodule_from_instance('assign', $entry->assignment);
+                $context = '課題';
             } else {
                 return;
             }
@@ -91,8 +94,9 @@ class observer {
             $a->fullname = fullname($entryauthor);
             $a->entryurl = $entryurl->out(); // エントリのURLを取得
             $a->commentauthor = fullname($commentauthor); // コメント投稿者のフルネームを取得
+            $a->context = $context;
 
-            $message->subject = get_string('commentnotification_subject', 'local_db_com_notificator');
+            $message->subject = get_string('commentnotification_subject', 'local_db_com_notificator', $a);
             $message->fullmessage = get_string('commentnotification_fullmessage', 'local_db_com_notificator', $a);
             $message->fullmessageformat = FORMAT_MARKDOWN;
             $message->fullmessagehtml = get_string('commentnotification_fullmessagehtml', 'local_db_com_notificator', $a);

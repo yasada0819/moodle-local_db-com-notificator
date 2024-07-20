@@ -1,12 +1,12 @@
 <?php
 // プラグインの名前
-$string['pluginname'] = 'データベースコメント通知';
+$string['pluginname'] = 'コメント通知';
 
 // 通知の内容
-$string['commentnotification_subject'] = 'データベースエントリに新しいコメントが投稿されました';
-$string['commentnotification_fullmessage'] = '{$a->fullname} さん、\n\n{$a->commentauthor} さんがあなたのデータベースエントリに新しいコメントを投稿しました。以下のリンクから確認してください。\n\n{$a->entryurl}\n\nよろしくお願いします。\nMoodleチーム';
-$string['commentnotification_fullmessagehtml'] = '<p>{$a->fullname} さん、</p><p>{$a->commentauthor} さんがあなたのデータベースエントリに新しいコメントを投稿しました。以下のリンクから確認してください。</p><p><a href="{$a->entryurl}">エントリを表示</a></p><p>よろしくお願いします。<br>Moodleチーム</p>';
-$string['commentnotification_smallmessage'] = '{$a->commentauthor} さんがあなたのデータベースエントリに新しいコメントを投稿しました。';
+$string['commentnotification_subject'] = 'あなたの{$a->context}エントリに新しいコメントがあります';
+$string['commentnotification_fullmessage'] = '{$a->fullname}さん、\n\nあなたの{$a->context}エントリに{$a->commentauthor}さんから新しいコメントが投稿されました。以下のURLで確認してください：\n\n{$a->entryurl}\n\nよろしくお願いします。\nMoodleチーム';
+$string['commentnotification_fullmessagehtml'] = '{$a->fullname}さん、<br><br>あなたの{$a->context}エントリに{$a->commentauthor}さんから新しいコメントが投稿されました。以下のURLで確認してください：<br><br><a href="{$a->entryurl}">{$a->entryurl}</a><br><br>よろしくお願いします。<br>Moodleチーム';
+$string['commentnotification_smallmessage'] = 'あなたの{$a->context}エントリに{$a->commentauthor}さんから新しいコメントが投稿されました。';
 
 // 設定画面
 

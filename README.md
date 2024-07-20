@@ -1,4 +1,4 @@
-# データベースコメント通知
+# コメント通知
 
 ## 概要
 
@@ -7,9 +7,8 @@
 ## 実装完了した機能
 
 - コメント投稿時の通知（Moodle上、日本語と英語）
-- 用語集、課題に対するコメントの通知機能
-- 設定画面の追加（データベース・課題・用語集のコメントを通知するか否か、サイト全体として制御可能）
-
+- データベース、用語集、課題に対するコメントの通知機能
+- 設定画面の追加（データベース・用語集・課題のコメントを通知するか否か、サイト全体として制御可能）
 
 ## 未実装・未実施の機能
 
@@ -17,17 +16,25 @@
     - 処理が非常に面倒になりそうなので、作業の優先順位低
 - 通知発信までの猶予を（5分程度、決め打ちで）設ける
 - 連続投稿された場合に、一定時間は通知が飛ばないようにする
+- wiki、問題バンクのコメントなど、その他のmessageに対する通知
 
 ## 余談
 
 元々は「データベースモジュールの」エントリのみで考えていましたが、結果的に mdl_commentsの内容を拾って通知、という部分まで手を広げています。「データベースモジュールの」という意味でdb_com_という名前にしましたが、「Moodleデータベースの中のcommentsテーブルに対するNotification」とも考えられる名称なので、開発開始時の名前をそのまま使っています。
 
 
-
-# Database Comment Notifications
+# Comment Notifications
 
 ## Description
-This Moodle plugin notifies users when their database entry receives a new comment.
+
+A local plugin for Moodle to notify the author of an entry when a comment is made on a database or other entry.
+
+## Features implemented
+
+- Notification when comments are posted (on Moodle, in Japanese and English).
+- Notification function for comments on databases, glossaries and comments for assignment submissions.
+- Addition of a settings screen (site-wide control of whether comments on databases, glossaries, and assignments are notified or not).
+
 
 ## Installation
 1. Place the `local_db_com_notificator` folder in the `local` directory of your Moodle installation.

@@ -18,9 +18,14 @@
 - 連続投稿された場合に、一定時間は通知が飛ばないようにする
 - wiki、問題バンクのコメントなど、その他のmessageに対する通知
 
+## 機能追加等について
+
+少なくとも自分自身が元々実施したかった機能（教師がデータベースエントリにコメントをつけると、投稿した学生に通知される）は実装できてしまっているため、追加に関してはかなりスローペースになります。
+
 ## 余談
 
 元々は「データベースモジュールの」エントリのみで考えていましたが、結果的に mdl_commentsの内容を拾って通知、という部分まで手を広げています。「データベースモジュールの」という意味でdb_com_という名前にしましたが、「Moodleデータベースの中のcommentsテーブルに対するNotification」とも考えられる名称なので、開発開始時の名前をそのまま使っています。
+
 
 
 # Comment Notifications
@@ -34,6 +39,19 @@ A local plugin for Moodle to notify the author of an entry when a comment is mad
 - Notification when comments are posted (on Moodle, in Japanese and English).
 - Notification function for comments on databases, glossaries and comments for assignment submissions.
 - Addition of a settings screen (site-wide control of whether comments on databases, glossaries, and assignments are notified or not).
+
+## Not implemented/not yet implemented feature
+
+- Make it so that notifications are sent not only to the author of the entry but also to the comment author (this feature should be selectable ON/OFF).
+    - This is a low priority task because the process is likely to be very cumbersome.
+- Allow a grace period (5 minutes or so, to be determined) before a notification is sent out.
+- When a series of posts are made, make it so that notifications will not be sent out for a certain period of time.
+- Notification for other messages such as wiki, comments on question bank, etc.
+
+
+## Additions to functionality, etc.
+
+Since I have already implemented at least the feature I originally wanted to implement (teachers commenting on database entries are notified to the students who posted them), the pace of additions will be quite slow.
 
 
 ## Installation
